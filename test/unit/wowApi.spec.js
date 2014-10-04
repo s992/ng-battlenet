@@ -135,7 +135,7 @@ describe( "wowApi", function() {
 		// right in the middle of the params.. so... long urls here.
 		describe( "achievements", function() {
 
-			it( "should request /wow/character/kil'jaeden/gewd", function() {
+			it( "should request /wow/character/kil'jaeden/gewd?fields=achievements", function() {
 				httpBackend.expectJSONP( baseURL + "wow/character/kil'jaeden/gewd?apikey=API_KEY_PLACEHOLDER&fields=achievements&jsonp=JSON_CALLBACK&locale=en_US" ).respond();
 				api.character.achievements({ name: "gewd", realm: "kil'jaeden" });
 			});

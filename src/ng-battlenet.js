@@ -166,11 +166,6 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 	"use strict";
 
 	var service = {},
-		possibleCharacterFields = [
-			"achievements", "appearance", "feed", "guild", "hunterPets",
-			"items", "mounts", "pets", "petSlots", "progression", "pvp",
-			"quests", "reputation", "stats", "talents", "titles", "audit"
-		],
 		possibleGuildFields = [
 			"members", "achievements", "news", "challenge"
 		];
@@ -179,6 +174,16 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 		params = params || {};
 		angular.extend( params, { jsonp: "JSON_CALLBACK" });
 		return battleNetApiRequest( "wow/" + path, params );
+	}
+
+	// characters and guilds have a lot of endpoints that are basically the same with the
+	// exception of adding &fields=foo to the URL. we can get rid of a lot of boilerplate
+	// by using this method instead of writing it out for each endpoint.
+	function withField( field, callback ) {
+		return function( params ) {
+			angular.extend( params, { fields: field });
+			return callback( params );
+		}
 	}
 
 
@@ -221,13 +226,23 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 		}
 	};
 
-	// no need to clutter this service up with 17 nearly identical methods to cover all character fields.
-	angular.forEach( possibleCharacterFields, function( field ) {
-		service.character[ field ] = function( params ) {
-			angular.extend( params, { fields: field });
-			return service.character.profile( params );
-		};
-	});
+	service.character.achievements 	= withField( "achievements", service.character.profile );
+	service.character.appearance 	= withField( "appearance", service.character.profile );
+	service.character.feed 			= withField( "feed", service.character.profile );
+	service.character.guild 		= withField( "guild", service.character.profile );
+	service.character.hunterPets 	= withField( "hunterPets", service.character.profile );
+	service.character.items 		= withField( "items", service.character.profile );
+	service.character.mounts 		= withField( "mounts", service.character.profile );
+	service.character.pets 			= withField( "pets", service.character.profile );
+	service.character.petSlots 		= withField( "petSlots", service.character.profile );
+	service.character.progression 	= withField( "progression", service.character.profile );
+	service.character.pvp 			= withField( "pvp", service.character.profile );
+	service.character.quests 		= withField( "quests", service.character.profile );
+	service.character.reputation 	= withField( "reputation", service.character.profile );
+	service.character.stats 		= withField( "stats", service.character.profile );
+	service.character.talents 		= withField( "talents", service.character.profile );
+	service.character.titles 		= withField( "titles", service.character.profile );
+	service.character.audit 		= withField( "audit", service.character.profile );
 
 
 	service.data = {
@@ -270,13 +285,10 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 		}
 	};
 
-	// same setup as the character fields
-	angular.forEach( possibleGuildFields, function( field ) {
-		service.guild[ field ] = function( params ) {
-			angular.extend( params, { fields: field });
-			return service.guild.profile( params );
-		};
-	});
+	service.guild.members 		= withField( "members", service.guild.profile );
+	service.guild.achievements 	= withField( "achievements", service.guild.profile );
+	service.guild.news 			= withField( "news", service.guild.profile );
+	service.guild.challenge 	= withField( "challenge", service.guild.profile );
 
 
 	service.item = {
