@@ -1,20 +1,20 @@
 # ng-battlenet
 An AngularJS wrapper for the Battle.net API. 
 
-# API Keys
+## API Keys
 I started working on this before Blizzard switched to API keys instead of anonymous usage. It's not as useful anymore because your API key will be visible to anyone who cares to look, but I figured I might as well release it anyway.
 
 Register for an API key at https://dev.battle.net
 
-# Thanks!
+## Thanks!
 Heavily inspired (read: I copied some stuff) by the Node wrapper: https://github.com/benweier/battlenet-api
 
-# Installation
+## Installation
 
-## Bower
+### Bower
 Coming soon.
 
-## Manual
+### Manual
 1. Download/clone/whatever `dist/ng-battlenet.min.js` or `src/ng-battlenet.js`
 2. Get [httpi](https://github.com/bennadel/httpi)
 3. Include both libraries in your HTML:
@@ -24,10 +24,10 @@ Coming soon.
 <script src="path/to/js/ng-battlenet.min.js"></script>
 ```
 
-# Dependencies
+## Dependencies
 Requires AngularJS and Ben Nadel's [httpi](https://github.com/bennadel/httpi).
 
-# Usage
+## Usage
 Add the `ngBattleNet` dependency to your module:
 
 ``` js
@@ -53,7 +53,7 @@ myApp.controller( "MyCtrl", [ "battleNetApi", function( battleNetApi ) {
 }])
 ```
 
-# Documentation
+## Documentation
 All Diablo 3, Starcraft 2, and World of Warcraft endpoints from https://dev.battle.net/io-docs have been implemented.
 
 Each method will return a promise:
