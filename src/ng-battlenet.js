@@ -180,7 +180,7 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 		return function( params ) {
 			angular.extend( params, { fields: field });
 			return callback( params );
-		}
+		};
 	}
 
 
