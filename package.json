@@ -1,6 +1,6 @@
 {
   "name": "ng-battlenet",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "./src/ng-battlenet.js",
   "directories": {
