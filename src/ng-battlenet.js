@@ -219,7 +219,13 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 
 	service.character = {
 		profile: function( params ) {
+
+			if( params && params.fields && Array.isArray( params.fields ) ) {
+				params.fields = params.fields.join(",");
+			}
+
 			return makeRequest( "character/:realm/:name", params );
+
 		}
 	};
 
@@ -278,7 +284,13 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 
 	service.guild = {
 		profile: function( params ) {
+
+			if( params && params.fields && Array.isArray( params.fields ) ) {
+				params.fields = params.fields.join(",");
+			}
+
 			return makeRequest( "guild/:realm/:name", params );
+			
 		}
 	};
 

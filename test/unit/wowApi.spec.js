@@ -131,6 +131,22 @@ describe( "wowApi", function() {
 
 		});
 
+		describe( "profile with arbitrary fields", function() {
+
+			beforeEach(function() {
+				httpBackend.expectJSONP(/&fields=achievements,items,progression/).respond();
+			});
+
+			it( "should work with a comma delimited list of fields", function() {
+				api.character.profile({ name: "gewd", realm: "kil'jaeden", fields: "achievements,items,progression" });
+			});
+
+			it( "should work with an array of fields", function() {
+				api.character.profile({ name: "gewd", realm: "kil'jaeden", fields: [ "achievements", "items", "progression" ] });
+			});
+
+		});
+
 		// for all the field specific stuff, we can't use our default queryparams string because fields gets added
 		// right in the middle of the params.. so... long urls here.
 		describe( "achievements", function() {
@@ -317,6 +333,22 @@ describe( "wowApi", function() {
 			it( "should request /wow/guild/kil'jaeden/cognition", function() {
 				httpBackend.expectJSONP( baseURL + "wow/guild/kil'jaeden/cognition" + queryParams ).respond();
 				api.guild.profile({ name: "cognition", realm: "kil'jaeden" });
+			});
+
+		});
+
+		describe( "profile with arbitrary fields", function() {
+
+			beforeEach(function() {
+				httpBackend.expectJSONP(/&fields=members,news,challenge/).respond();
+			});
+
+			it( "should work with a comma delimited list of fields", function() {
+				api.guild.profile({ name: "cognition", realm: "kil'jaeden", fields: "members,news,challenge" });
+			});
+
+			it( "should work with an array of fields", function() {
+				api.guild.profile({ name: "cognition", realm: "kil'jaeden", fields: [ "members", "news", "challenge" ] });
 			});
 
 		});
