@@ -33,8 +33,8 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 .factory( "battleNetApiRequest", [ "battleNetConfig", "httpi", function battleNetApiRequest( battleNetConfig, httpi ) {
 	"use strict";
 
-	// some endpoints have a "region" parameter, so we'll use "origin" internally to avoid conflicts.
-	var host = "https://:origin.api.battle.net/",
+	// some endpoints have a "region" parameter, so we'll use "bnetRegion" internally to avoid conflicts.
+	var host = "https://:bnetRegion.api.battle.net/",
 		defaultParams = {
 			apikey: battleNetConfig.getApiKey()
 		},
@@ -52,8 +52,8 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 
 		params = params || {};
 		angular.extend( params, defaultParams );
-		params.origin = params.origin || battleNetConfig.getDefaultRegion();
-		params.locale = params.locale || regionLocales[ params.origin ];
+		params.bnetRegion = params.bnetRegion || battleNetConfig.getDefaultRegion();
+		params.locale = params.locale || regionLocales[ params.bnetRegion ];
 
 		return httpi({
 			method: "jsonp",

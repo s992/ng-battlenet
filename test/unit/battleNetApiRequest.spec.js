@@ -47,7 +47,7 @@ describe( "battleNetApiRequest", function() {
 
 			httpBackend.expectJSONP( "https://tw.api.battle.net/path/to/resource/123?apikey=API_KEY_PLACEHOLDER&locale=zh_TW" ).respond();
 			request( "path/to/resource/:id", {
-				origin: "tw",
+				bnetRegion: "tw",
 				id: 123
 			});
 
@@ -66,47 +66,47 @@ describe( "battleNetApiRequest", function() {
 
 	describe( "locales", function() {
 
-		it( "should use en_US when origin == us", function() {
+		it( "should use en_US when bnetRegion == us", function() {
 
 			httpBackend.expectJSONP( "https://us.api.battle.net/path/to/resource?apikey=API_KEY_PLACEHOLDER&locale=en_US" ).respond();
 			request( "path/to/resource", {
-				origin: "us"
+				bnetRegion: "us"
 			});
 
 		});
 
-		it( "should use en_GB when origin == eu", function() {
+		it( "should use en_GB when bnetRegion == eu", function() {
 
 			httpBackend.expectJSONP( "https://eu.api.battle.net/path/to/resource?apikey=API_KEY_PLACEHOLDER&locale=en_GB" ).respond();
 			request( "path/to/resource", {
-				origin: "eu"
+				bnetRegion: "eu"
 			});
 
 		});
 
-		it( "should use en_US when origin == sea", function() {
+		it( "should use en_US when bnetRegion == sea", function() {
 
 			httpBackend.expectJSONP( "https://sea.api.battle.net/path/to/resource?apikey=API_KEY_PLACEHOLDER&locale=en_US" ).respond();
 			request( "path/to/resource", {
-				origin: "sea"
+				bnetRegion: "sea"
 			});
 
 		});
 
-		it( "should use ko_KR when origin == kr", function() {
+		it( "should use ko_KR when bnetRegion == kr", function() {
 
 			httpBackend.expectJSONP( "https://kr.api.battle.net/path/to/resource?apikey=API_KEY_PLACEHOLDER&locale=ko_KR" ).respond();
 			request( "path/to/resource", {
-				origin: "kr"
+				bnetRegion: "kr"
 			});
 
 		});
 
-		it( "should use zh_TW when origin == tw", function() {
+		it( "should use zh_TW when bnetRegion == tw", function() {
 
 			httpBackend.expectJSONP( "https://tw.api.battle.net/path/to/resource?apikey=API_KEY_PLACEHOLDER&locale=zh_TW" ).respond();
 			request( "path/to/resource", {
-				origin: "tw"
+				bnetRegion: "tw"
 			});
 
 		});
