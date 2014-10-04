@@ -165,10 +165,7 @@ angular.module( "ngBattleNet", [ "httpi" ] )
 .factory( "wowApi", [ "battleNetApiRequest", function wowApi( battleNetApiRequest ) {
 	"use strict";
 
-	var service = {},
-		possibleGuildFields = [
-			"members", "achievements", "news", "challenge"
-		];
+	var service = {};
 
 	function makeRequest( path, params ) {
 		params = params || {};
