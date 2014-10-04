@@ -1,0 +1,24 @@
+{
+  "name": "ng-battlenet",
+  "version": "0.0.1",
+  "main": "./src/ng-battlenet.js",
+  "authors": [
+    "Sean Walsh <sean@swalsh.org>"
+  ],
+  "description": "Angular wrapper for Battle.net API.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.26",
+    "angular-httpi": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.26"
+  }
+}
