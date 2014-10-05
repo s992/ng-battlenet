@@ -12,7 +12,18 @@ Heavily inspired (read: I copied some stuff) by the Node wrapper: https://github
 ## Installation
 
 ### Bower
-Coming soon.
+Add `ng-battlenet` to your `bower.json` as a dependency, or run:
+
+```
+bower install --save ng-battlenet
+```
+
+Include `ng-battlenet.min.js` and `httpi.min.js` in your HTML:
+
+``` html
+<script src="bower_components/angular-httpi/build/httpi.min.js"></script>
+<script src="bower_components/ng-battlenet/dist/ng-battlenet.min.js"></script>
+```
 
 ### Manual
 1. Download/clone/whatever `dist/ng-battlenet.min.js` or `src/ng-battlenet.js`
